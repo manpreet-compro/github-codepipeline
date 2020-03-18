@@ -2,7 +2,7 @@
 
 # *** Change this to the desired name of the Cloudformation stack of 
 # your Pipeline (*not* the stack name of your app)
-CODEPIPELINE_STACK_NAME="github-codepipeline"
+CODEPIPELINE_STACK_NAME="pipeline-test-1"
 
 if [ -z ${1} ]
 then
@@ -16,5 +16,6 @@ set -eu
 aws cloudformation create-stack \
         --capabilities CAPABILITY_IAM \
         --stack-name $CODEPIPELINE_STACK_NAME \
-        --parameters ParameterKey=GitHubOAuthToken,ParameterValue=${1} \
-        --template-body file://pipeline.yaml
+        --parameters ParameterKey=GithubToken,ParameterValue=${1} \
+        --template-body file://pipeline1.yaml \
+        --profile cup
